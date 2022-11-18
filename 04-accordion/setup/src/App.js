@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import data from "./data";
 import SingleQuestion from "./Question";
 function App() {
@@ -8,7 +8,7 @@ function App() {
         <h3>Question and answers about login</h3>
         <section className="info">
           {data.map((el) => (
-            <SingleQuestion key={el.id} />
+            <SingleQuestion key={el.id} data={el} />
           ))}
         </section>
       </div>
