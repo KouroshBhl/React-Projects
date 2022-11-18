@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Categories = ({ items, showCategory, setCategorySwitch }) => {
-  console.log(items);
   return (
     <button
       type="button"

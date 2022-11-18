@@ -3,10 +3,9 @@ import Menu from './Menu';
 import Categories from './Categories';
 import items from './data';
 
+const category = ['All', ...new Set(items.map((item) => item.category))];
+
 function App() {
-  const category = items.map((item) => item.category);
-  const uniqueCategory = new Set(category);
-  const uniqueCategoryArr = ['All', ...Array.from(uniqueCategory)];
   const [categorySwitch, setCategorySwitch] = useState(items);
 
   const showCategory = function (category) {
@@ -23,7 +22,7 @@ function App() {
           <div className="underline"></div>
         </div>
         <div className="btn-container">
-          {uniqueCategoryArr.map((item) => (
+          {category.map((item) => (
             <Categories items={item} key={item} showCategory={showCategory} />
           ))}
         </div>

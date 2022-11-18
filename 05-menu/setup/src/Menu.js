@@ -2,7 +2,6 @@ import React from 'react';
 
 const Menu = ({ data }) => {
   const { title, price, img, desc } = data;
-  console.log(data);
   return (
     <article className="menu-item">
       <img className="photo" src={img} alt={title} />
