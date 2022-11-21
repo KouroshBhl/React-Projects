@@ -13,16 +13,16 @@ const Sidebar = () => {
         </button>
 
         <div className='sidebar-links'>
-          {sublinks.map((title) => {
+          {sublinks.map((title, index) => {
             const { page, links } = title
             return (
-              <article>
+              <article key={index}>
                 <h4>{page}</h4>
                 <div className='sidebar-sublinks'>
-                  {links.map((sub) => {
+                  {links.map((sub, index) => {
                     const { label, icon, url } = sub
                     return (
-                      <a href={url}>
+                      <a href={url} key={index}>
                         {icon} {label}
                       </a>
                     )

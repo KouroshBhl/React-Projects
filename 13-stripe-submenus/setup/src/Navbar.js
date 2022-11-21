@@ -4,7 +4,15 @@ import { FaBars } from 'react-icons/fa'
 import { useContextAPI } from './context'
 
 const Navbar = () => {
-  const { setIsSidebarOpen } = useContextAPI()
+  const { setIsSidebarOpen, openSubmenu } = useContextAPI()
+
+  const displaySubmenu = function (e) {
+    const page = e.target.textContent
+    const tempBtn = e.target.getBoundingClientRect()
+    const center = (tempBtn.left + tempBtn.right) / 2
+    const bottom = tempBtn.bottom - 3
+    openSubmenu(page, { center, bottom })
+  }
   return (
     <nav className='nav'>
       <div className='nav-center'>
@@ -19,13 +27,19 @@ const Navbar = () => {
         </div>
         <ul className='nav-links'>
           <li>
-            <button className='link-btn'>Products</button>
+            <button className='link-btn' onMouseOver={(e) => displaySubmenu(e)}>
+              products
+            </button>
           </li>
           <li>
-            <button className='link-btn'>Products</button>
+            <button className='link-btn' onMouseOver={(e) => displaySubmenu(e)}>
+              developers
+            </button>
           </li>
           <li>
-            <button className='link-btn'>Products</button>
+            <button className='link-btn' onMouseOver={(e) => displaySubmenu(e)}>
+              company
+            </button>
           </li>
         </ul>
         <button className='btn signin-btn'>Sign In</button>
