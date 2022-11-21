@@ -4,7 +4,7 @@ import { FaBars } from 'react-icons/fa'
 import { useContextAPI } from './context'
 
 const Navbar = () => {
-  const { setIsSidebarOpen, openSubmenu } = useContextAPI()
+  const { setIsSidebarOpen, openSubmenu, setIsSubmenuOpen } = useContextAPI()
 
   const displaySubmenu = function (e) {
     const page = e.target.textContent
@@ -13,8 +13,13 @@ const Navbar = () => {
     const bottom = tempBtn.bottom - 3
     openSubmenu(page, { center, bottom })
   }
+
+  const handleCloseSubmenu = function (e) {
+    if (!e.target.classList.contains('link-btn')) setIsSubmenuOpen(false)
+  }
+
   return (
-    <nav className='nav'>
+    <nav className='nav' onMouseOver={handleCloseSubmenu}>
       <div className='nav-center'>
         <div className='nav-header'>
           <img src={logo} alt='logo' className='nav-logo' />

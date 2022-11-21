@@ -28,6 +28,7 @@ const ContextProvider = function ({ children }) {
         isSubmenuOpen,
         location,
         subMenuData,
+        setIsSubmenuOpen,
       }}
     >
       {children}

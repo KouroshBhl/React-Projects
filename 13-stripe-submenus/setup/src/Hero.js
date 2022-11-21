@@ -3,8 +3,9 @@ import phoneImg from './images/phone.svg'
 import { useContextAPI } from './context'
 
 const Hero = () => {
+  const { setIsSubmenuOpen } = useContextAPI()
   return (
-    <section className='hero'>
+    <section className='hero' onMouseOver={() => setIsSubmenuOpen(false)}>
       <div className='hero-center'>
         <article className='hero-info'>
           <h1>
