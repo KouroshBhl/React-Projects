@@ -3,7 +3,30 @@ import logo from './images/logo.svg'
 import { FaBars } from 'react-icons/fa'
 
 const Navbar = () => {
-  return <h2>navbar component</h2>
+  return (
+    <nav className='nav'>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <img src={logo} alt='logo' className='nav-logo' />
+          <button className='btn toggle-btn'>
+            <FaBars />
+          </button>
+        </div>
+        <ul className='nav-links'>
+          <li>
+            <button className='link-btn'>Products</button>
+          </li>
+          <li>
+            <button className='link-btn'>Products</button>
+          </li>
+          <li>
+            <button className='link-btn'>Products</button>
+          </li>
+        </ul>
+        <button className='btn signin-btn'>Sign In</button>
+      </div>
+    </nav>
+  )
 }
 
 export default Navbar
