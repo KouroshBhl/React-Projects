@@ -1,14 +1,19 @@
 import React from 'react'
 import logo from './images/logo.svg'
 import { FaBars } from 'react-icons/fa'
+import { useContextAPI } from './context'
 
 const Navbar = () => {
+  const { setIsSidebarOpen } = useContextAPI()
   return (
     <nav className='nav'>
       <div className='nav-center'>
         <div className='nav-header'>
           <img src={logo} alt='logo' className='nav-logo' />
-          <button className='btn toggle-btn'>
+          <button
+            className='btn toggle-btn'
+            onClick={() => setIsSidebarOpen(true)}
+          >
             <FaBars />
           </button>
         </div>
