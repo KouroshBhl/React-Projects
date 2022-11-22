@@ -26,7 +26,10 @@ const defaultState = {
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState)
-  console.log(state)
+
+  useEffect(() => {
+    dispatch({ type: 'UPDATE_TOTAL' })
+  }, [state.cart])
 
   useEffect(() => {
     // const data = fetchData(url)
