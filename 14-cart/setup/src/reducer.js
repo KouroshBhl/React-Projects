@@ -46,6 +46,12 @@ export default function (state, action) {
 
     return { ...state, amount, total }
   }
+  if (action.type === 'LOADING') {
+    return { ...state, loading: true }
+  }
+  if (action.type === 'FETCH_DATA') {
+    return { ...state, loading: false, cart: action.payload }
+  }
   return state
 
   // throw new Error('No Matching type!!!!!!!!!')
