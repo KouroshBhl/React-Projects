@@ -281,6 +281,9 @@ ul {
 .active {
   color: var(--primary-500);
 }
+/* .active-custom {
+  color: red;
+} */
 .products article {
   margin-bottom: 1rem;
 }
