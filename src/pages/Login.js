@@ -1,11 +1,16 @@
-import { useState } from 'react';
-const Login = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+const Login = ({ setUser }) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const navigateTo = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+    if (!name || !email) return
+    setUser({ name, email })
+    navigateTo('/dashboard')
+  }
 
   return (
     <section className='section'>
@@ -40,6 +45,6 @@ const Login = () => {
         </button>
       </form>
     </section>
-  );
-};
-export default Login;
+  )
+}
+export default Login
