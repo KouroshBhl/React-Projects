@@ -409,3 +409,9 @@ Cocktail
     height: 5em;
   }
 }
+
+.active {
+  background-color: var(--primaryColor);
+  color: #fff;
+  border-radius: 4px;
+}

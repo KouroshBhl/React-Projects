@@ -1,12 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 
 const Cocktail = () => {
-  return (
-    <div>
-      <h2>cocktail component</h2>
-    </div>
-  )
+  return <></>
 }
 
 export default Cocktail

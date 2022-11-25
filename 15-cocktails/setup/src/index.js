@@ -1,16 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import { AppProvider } from './context'
-ReactDOM.render(
+import * as React from 'react'
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+root.render(
   <React.StrictMode>
     <AppProvider>
-    <App />
+      <App />
     </AppProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  </React.StrictMode>
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
