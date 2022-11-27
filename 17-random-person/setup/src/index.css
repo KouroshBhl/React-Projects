@@ -231,6 +231,8 @@ p {
 .btn {
   margin: 0 auto;
   margin-top: 1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 @media screen and (min-width: 800px) {
