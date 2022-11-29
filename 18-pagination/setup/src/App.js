@@ -14,6 +14,13 @@ function App() {
   const goToPageHandler = function (index) {
     setButton(index)
   }
+  const prevBtnHandler = function () {
+    if (button > 0) setButton((prevBtn) => prevBtn - 1)
+  }
+
+  const nextBtnHandler = function () {
+    if (button < data.length - 1) setButton((prevBtn) => prevBtn + 1)
+  }
 
   if (loading) {
     return (
@@ -40,7 +47,9 @@ function App() {
           </div>
 
           <div className='btn-container'>
-            <button className='prev-btn'>prev</button>
+            <button className='prev-btn' onClick={prevBtnHandler}>
+              prev
+            </button>
             {data.map((_, index) => {
               return (
                 <button
@@ -52,7 +61,9 @@ function App() {
                 </button>
               )
             })}
-            <button className='next-btn'>next</button>
+            <button className='next-btn' onClick={nextBtnHandler}>
+              next
+            </button>
           </div>
         </section>
       </main>
