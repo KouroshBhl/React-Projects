@@ -16,10 +16,12 @@ function App() {
   }
   const prevBtnHandler = function () {
     if (button > 0) setButton((prevBtn) => prevBtn - 1)
+    else setButton(data.length - 1)
   }
 
   const nextBtnHandler = function () {
     if (button < data.length - 1) setButton((prevBtn) => prevBtn + 1)
+    else setButton(0)
   }
 
   if (loading) {
@@ -47,23 +49,27 @@ function App() {
           </div>
 
           <div className='btn-container'>
-            <button className='prev-btn' onClick={prevBtnHandler}>
-              prev
-            </button>
-            {data.map((_, index) => {
-              return (
-                <button
-                  className={`page-btn ${index === button && 'active-btn'}`}
-                  key={index}
-                  onClick={() => goToPageHandler(index)}
-                >
-                  {index + 1}
+            {data.length > 1 && (
+              <>
+                <button className='prev-btn' onClick={prevBtnHandler}>
+                  prev
                 </button>
-              )
-            })}
-            <button className='next-btn' onClick={nextBtnHandler}>
-              next
-            </button>
+                {data.map((_, index) => {
+                  return (
+                    <button
+                      className={`page-btn ${index === button && 'active-btn'}`}
+                      key={index}
+                      onClick={() => goToPageHandler(index)}
+                    >
+                      {index + 1}
+                    </button>
+                  )
+                })}
+                <button className='next-btn' onClick={nextBtnHandler}>
+                  next
+                </button>
+              </>
+            )}
           </div>
         </section>
       </main>
