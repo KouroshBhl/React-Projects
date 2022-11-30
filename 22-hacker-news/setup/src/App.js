@@ -1,9 +1,18 @@
 import React from 'react'
-import SearchForm from './SearchForm'
-import Stories from './Stories'
-import Buttons from './Buttons'
+import { useGlobalContext } from './helper/context'
+import SearchForm from './components/SearchForm'
+import Pagination from './components/Pagination'
+import News from './components/News'
+
 function App() {
-  return <h2>hacker news starter</h2>
+  const { loading } = useGlobalContext()
+  return (
+    <>
+      <SearchForm />
+      <Pagination />
+      {loading ? <div className='loading'></div> : <News />}
+    </>
+  )
 }
 
 export default App
