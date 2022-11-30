@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import DetailMovie from '../components/DetailMovie'
 
 const SingleMovie = () => {
-  const { getData, movies, loading } = useGlobalContext()
+  const { getData, movie, loading } = useGlobalContext()
   const { movieID } = useParams()
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const SingleMovie = () => {
   }, [])
   return (
     <>
-      {loading ? <div className='loading'></div> : <DetailMovie {...movies} />}
+      {loading ? <div className='loading'></div> : <DetailMovie {...movie} />}
     </>
   )
 }

@@ -18,7 +18,7 @@ export const reducer = function (state, action) {
       return {
         ...state,
         loading: false,
-        movies: action.payload?.data,
+        movie: action.payload?.data,
         found: true,
       }
 
@@ -39,4 +39,5 @@ export const initalState = {
   loading: false,
   movies: [],
   found: true,
+  movie: [],
 }
