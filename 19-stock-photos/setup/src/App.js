@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import Photo from './Photo'
 const mainUrl = `https://api.unsplash.com/photos/`
@@ -8,8 +9,10 @@ const clientID = `?client_id=${process.env.REACT_APP_ACCESS_TOKEN}`
 function App() {
   const [loading, setLoading] = useState(false)
   const [photos, setPhotos] = useState([])
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(1)
   const [query, setQuery] = useState('')
+  const [newImages, setNewImages] = useState(false)
+  const mounted = useRef(false)
 
   const fetchPhotos = async function () {
     setLoading(true)
@@ -36,12 +39,14 @@ function App() {
       } else {
         setPhotos(data)
       }
+      setNewImages(false)
       setLoading(false)
     } catch (error) {
+      setNewImages(false)
       setLoading(false)
-      console.log(error)
     }
   }
+
   useEffect(() => {
     fetchPhotos()
     //eslint-disable-next-line
@@ -49,21 +54,38 @@ function App() {
 
   const formSubmitHandler = function (e) {
     e.preventDefault()
+    if (!query) return
+    if (page === 1) return fetchPhotos()
     setPage(1)
   }
 
   useEffect(() => {
-    const scrollListener = window.addEventListener('scroll', function () {
-      if (
-        !loading &&
-        window.innerHeight + this.window.scrollY >=
-          this.document.body.scrollHeight - 50
-      ) {
-        setPage((prevPage) => prevPage + 1)
-      }
-    })
+    console.log(mounted.current)
+    if (!mounted.current) {
+      mounted.current = true
+      return
+    }
+    if (!newImages) return
+    if (loading) return
 
-    return () => window.removeEventListener('scroll', scrollListener)
+    setPage((prevPage) => prevPage + 1)
+
+    //eslint-disable-next-line
+  }, [newImages])
+
+  const event = function () {
+    if (
+      this.window.innerHeight + this.window.scrollY >=
+      this.document.body.scrollHeight - 2
+    ) {
+      setNewImages(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', event)
+
+    return () => window.removeEventListener('scroll', event)
     //eslint-disable-next-line
   }, [])
 
