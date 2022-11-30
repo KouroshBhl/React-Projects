@@ -9,6 +9,7 @@ const SingleMovie = () => {
 
   useEffect(() => {
     getData(`&i=${movieID}`, 'SEARCH_ID')
+    //eslint-disable-next-line
   }, [])
   return (
     <>

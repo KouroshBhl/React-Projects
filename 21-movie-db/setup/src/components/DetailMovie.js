@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../helper/context'
 
-const DetailMovie = ({ Title, Year, Poster, Plot }) => {
+const DetailMovie = ({ Title, Year, Poster, Plot, Type }) => {
   const { loading } = useGlobalContext()
 
   return (
@@ -16,6 +16,7 @@ const DetailMovie = ({ Title, Year, Poster, Plot }) => {
             <h2>{Title}</h2>
             <p>{Plot}</p>
             <h4>{Year}</h4>
+            <h4>{Type}</h4>
             <Link to='/' className='btn'>
               Back to Movies
             </Link>
