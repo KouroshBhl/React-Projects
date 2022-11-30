@@ -1,5 +1,4 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import { useGlobalContext } from './helper/context'
 import SearchMovie from './pages/SearchMovie'
 import SingleMovie from './pages/SingleMovie'
 

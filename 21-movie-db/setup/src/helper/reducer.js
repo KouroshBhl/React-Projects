@@ -1,14 +1,34 @@
 export const reducer = function (state, action) {
   switch (action.type) {
+    case 'LOADING':
+      return { ...state, loading: true }
+
     case 'FETCH_DATA':
-      return { ...state, loading: false, movies: action.payload?.data?.Search }
+      if (action.payload.data.Response === 'False')
+        return { ...state, movies: [], found: false }
+
+      return {
+        ...state,
+        loading: false,
+        movies: action.payload?.data?.Search,
+        found: true,
+      }
 
     case 'SEARCH_ID':
-      // console.log(action.payload)
-      return { ...state, loading: false, movies: action.payload?.data }
+      return {
+        ...state,
+        loading: false,
+        movies: action.payload?.data,
+        found: true,
+      }
 
     case 'SEARCH_DATA':
-      return { ...state, loading: false, movie: action.payload?.data }
+      return {
+        ...state,
+        loading: false,
+        movies: action.payload?.data,
+        found: true,
+      }
 
     default:
       return state
@@ -16,6 +36,7 @@ export const reducer = function (state, action) {
 }
 
 export const initalState = {
-  loading: true,
+  loading: false,
   movies: [],
+  found: true,
 }

@@ -7,7 +7,7 @@ const SearchForm = () => {
   const onChangeHandler = function (e) {
     const value = e.target.value
     if (!value) return getData(`&s=${DEFAULT_SEARCH}`, 'FETCH_DATA')
-    if (value.length < 4) return
+    if (value.length < 3) return
     getData(`&s=${value}`, 'FETCH_DATA')
   }
 

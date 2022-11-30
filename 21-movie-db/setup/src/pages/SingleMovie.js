@@ -4,13 +4,17 @@ import { useParams } from 'react-router'
 import DetailMovie from '../components/DetailMovie'
 
 const SingleMovie = () => {
-  const { getData, movies } = useGlobalContext()
+  const { getData, movies, loading } = useGlobalContext()
   const { movieID } = useParams()
 
   useEffect(() => {
     getData(`&i=${movieID}`, 'SEARCH_ID')
   }, [])
-  return <DetailMovie {...movies} />
+  return (
+    <>
+      {loading ? <div className='loading'></div> : <DetailMovie {...movies} />}
+    </>
+  )
 }
 
 export default SingleMovie
