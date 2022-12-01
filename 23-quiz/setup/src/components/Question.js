@@ -2,13 +2,8 @@ import React from 'react'
 import { useGlobalContext } from '../helper/context'
 
 const Question = () => {
-  const {
-    results,
-    questionPage,
-    questionsNum,
-    checkAnswerHandler,
-    correctAnswers,
-  } = useGlobalContext()
+  const { results, questionPage, checkAnswerHandler, correctAnswers } =
+    useGlobalContext()
   const page = results[questionPage]
   const { correct_answer, incorrect_answers, question } = page
   const answers = [...incorrect_answers, correct_answer]

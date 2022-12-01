@@ -12,6 +12,11 @@ const AppProvider = function ({ children }) {
   const getQuestions = async function (url, type) {
     try {
       const response = await axios(url)
+      console.log(response)
+
+      if (response.data.response_code === 1 && type !== 'GET_CATEGORIES')
+        return dispatch({ type: 'ERROR' })
+
       dispatch({ type, payload: response })
     } catch (error) {
       console.log(error)

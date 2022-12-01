@@ -7,6 +7,9 @@ const reducer = function (state, action) {
         loading: false,
       }
 
+    case 'ERROR':
+      return { ...state, isError: true }
+
     case 'SELECT_QUESTION_NUMBER':
       return { ...state, questionsNum: +action.payload, loading: false }
 
@@ -22,6 +25,7 @@ const reducer = function (state, action) {
         loading: false,
         results: action.payload.data.results,
         isFormSubmited: true,
+        isError: false,
       }
 
     case 'CHECK_ANSWER':
@@ -73,6 +77,7 @@ const initalState = {
   answers: [],
   correctAnswers: 0,
   showModal: false,
+  isError: false,
 }
 
 export { reducer, initalState }

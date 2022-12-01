@@ -6,12 +6,12 @@ import Question from './components/Question'
 import Modal from './components/Modal'
 
 function App() {
-  const { loading, isFormSubmited, showModal } = useGlobalContext()
+  const { loading, isFormSubmited, showModal, isError } = useGlobalContext()
   return (
     <main>
       {loading && <Loading />}
       {!loading && !isFormSubmited && <SetupForm />}
-      {!loading && isFormSubmited && <Question />}
+      {!loading && isFormSubmited && !isError && <Question />}
       {showModal && <Modal />}
     </main>
   )

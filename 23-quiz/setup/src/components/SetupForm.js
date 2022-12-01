@@ -9,6 +9,7 @@ const SetupForm = () => {
     onCategoryHandler,
     onDifficultyHandler,
     formSubmitHandler,
+    isError,
   } = useGlobalContext()
   return (
     <section className='quiz quiz-small'>
@@ -56,6 +57,11 @@ const SetupForm = () => {
             <option value='hard'>Hard</option>
           </select>
         </div>
+        {isError && (
+          <p className='error'>
+            Can't Generate Questions, Please Try Different Options
+          </p>
+        )}
         <button
           className='submit-btn'
           type='submit'
