@@ -1,15 +1,16 @@
-import React, { useContext, useReducer, useEffect, useCallback } from 'react'
+import React, { useContext, useReducer, useEffect } from 'react'
 import { reducer, initalState } from './reducer'
 import axios from 'axios'
 
 const Context = React.createContext()
-const url = `https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`
+// const url = `https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`
 const categoryUrl = `https://opentdb.com/api_category.php`
 
 const AppProvider = function ({ children }) {
   const [state, dispatch] = useReducer(reducer, initalState)
 
   const getQuestions = async function (url, type) {
+    dispatch({ type: 'LOADING' })
     try {
       const response = await axios(url)
       console.log(response)
@@ -50,7 +51,6 @@ const AppProvider = function ({ children }) {
 
   useEffect(() => {
     getQuestions(categoryUrl, 'GET_CATEGORIES')
-    // getQuestions(url, 'GET_QUESTIONS')
   }, [])
 
   return (

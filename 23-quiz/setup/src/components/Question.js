@@ -6,14 +6,16 @@ const Question = () => {
     useGlobalContext()
   const page = results[questionPage]
   const { correct_answer, incorrect_answers, question } = page
-  const answers = [...incorrect_answers, correct_answer]
+  let answers = [...incorrect_answers]
+  const tempIndex = Math.floor(Math.random() * 4)
+  answers.splice(tempIndex, 0, correct_answer)
   return (
     <section className='quiz'>
       <p className='correct-answer'>
         Correct Answers: {correctAnswers} / {questionPage}
       </p>
       <article className='container'>
-        <h2>{question}</h2>
+        <h2 dangerouslySetInnerHTML={{ __html: question }} />
         <div className='btn-container'>
           {answers.map((ans, inx) => {
             return (
@@ -21,9 +23,8 @@ const Question = () => {
                 key={inx}
                 className='answer-btn'
                 onClick={() => checkAnswerHandler(ans)}
-              >
-                {ans}
-              </button>
+                dangerouslySetInnerHTML={{ __html: ans }}
+              />
             )
           })}
         </div>

@@ -1,5 +1,8 @@
 const reducer = function (state, action) {
   switch (action.type) {
+    case 'LOADING':
+      return { ...state, loading: true }
+
     case 'GET_CATEGORIES':
       return {
         ...state,
