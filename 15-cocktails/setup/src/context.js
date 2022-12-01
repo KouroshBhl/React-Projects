@@ -34,7 +34,6 @@ const AppProvider = ({ children }) => {
   }
 
   const searchFormHandler = function (input) {
-    if (!input) return
     dispatch({ type: 'SEARCH_FORM', payloads: input })
   }
 

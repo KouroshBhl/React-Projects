@@ -2,6 +2,7 @@ import React from 'react'
 export default function (state, action) {
   switch (action.type) {
     case 'GET_DATA':
+      console.log(action.payloads)
       return { ...state, loading: false, data: action.payloads, error: false }
 
     case 'CLICK_DETAIL': {
@@ -20,7 +21,7 @@ export default function (state, action) {
           cocktail.strDrink.toLowerCase().slice(0, action.payloads.length) ===
           action.payloads.toLowerCase()
       )
-      // if (!findResults) return { ...state }
+
       return { ...state, search: findResults }
     }
     default:

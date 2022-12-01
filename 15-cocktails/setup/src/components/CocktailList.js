@@ -7,16 +7,24 @@ import { Link } from 'react-router-dom'
 const CocktailList = () => {
   const { data, onClickDetailHandler, search } = useGlobalContext()
   const { drinks } = data
+  console.log(drinks)
 
-  console.log(data)
-  console.log(search)
+  // const [isResult, setIsResult] = useState(false)
+
+  let array = []
+  if (search.length === 0) {
+    array = drinks
+  }
+  if (search.length > 0) {
+    array = search
+  }
 
   return (
     <section className='section'>
       <h2 className='section-title'>Cocktails</h2>
-
       <div className='cocktails-center'>
-        {drinks.map((item) => {
+        {array.map((item) => {
+          console.log(item)
           const { idDrink, strDrink, strGlass, strAlcoholic, strDrinkThumb } =
             item
 

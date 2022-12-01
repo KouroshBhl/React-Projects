@@ -7,15 +7,17 @@ import {
   FaMap,
   FaPhone,
   FaLock,
+  FcPicture,
 } from 'react-icons/fa'
 
 const url = 'https://randomuser.me/api/'
-const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg'
+// const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg'
 
 const reducer = function (state, action) {
   switch (action.type) {
     case 'GET_DATA':
       const { results } = action.payload.data
+      console.log(results)
       let name = ''
       const data = results.map((item) => {
         name = `${item.name.first} ${item.name.last}`
@@ -25,7 +27,7 @@ const reducer = function (state, action) {
           street: item.location.street.name,
           name,
           password: item.login.password,
-          img: item.picture.thumbnail,
+          img: item.picture.large,
           age: item.dob.age,
         }
       })
@@ -83,7 +85,11 @@ function App() {
         <div className='container'>
           {state.data.length > 0 && (
             <div>
-              <img src={state.data[0].img} alt='' className='user-img' />
+              <img
+                src={state.loading ? './profile.jpg' : state.data[0].img}
+                alt='profile'
+                className='user-img'
+              />
               <p className='user-title'>My {state.value} is</p>
               <p className='user-value'>{state.desc}</p>
             </div>

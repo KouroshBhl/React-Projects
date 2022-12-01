@@ -4,7 +4,6 @@ const reducer = function (state, action) {
       return { ...state, loading: true }
 
     case 'GET_NEWS':
-      console.log(action.payload)
       return {
         ...state,
         loading: false,
