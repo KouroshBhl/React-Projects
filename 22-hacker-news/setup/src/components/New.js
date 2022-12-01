@@ -1,6 +1,19 @@
 import React from 'react'
+import { useGlobalContext } from '../helper/context'
 
-const New = ({ title, points, url, num_comments: comments, author }) => {
+const New = ({
+  title,
+  points,
+  url,
+  num_comments: comments,
+  author,
+  objectID,
+}) => {
+  const { dispatch } = useGlobalContext()
+  const removeBtnHandler = function (id) {
+    dispatch({ type: 'REMOVE_NEW', payload: id })
+  }
+
   return (
     <article className='story'>
       <h4 className='title'>{title}</h4>
@@ -16,7 +29,12 @@ const New = ({ title, points, url, num_comments: comments, author }) => {
         >
           read more
         </a>
-        <button className='remove-btn'>remove</button>
+        <button
+          className='remove-btn'
+          onClick={() => removeBtnHandler(objectID)}
+        >
+          remove
+        </button>
       </div>
     </article>
   )

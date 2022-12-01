@@ -4,10 +4,9 @@ import New from './New'
 
 const News = () => {
   const { news } = useGlobalContext()
-  const data = news.data.hits
   return (
     <section className='stories'>
-      {data.map((item) => {
+      {news.map((item) => {
         return <New key={item.created_at_i} {...item} />
       })}
     </section>

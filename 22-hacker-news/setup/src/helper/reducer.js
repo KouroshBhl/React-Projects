@@ -8,7 +8,7 @@ const reducer = function (state, action) {
       return {
         ...state,
         loading: false,
-        news: action.payload,
+        news: action.payload.data.hits,
         totalPages: action.payload.data.nbPages,
         page: action.payload.data.page,
         results: action.payload.data.nbHits,
@@ -16,6 +16,13 @@ const reducer = function (state, action) {
 
     case 'SEARCH_QUERY':
       return { ...state, search: action.payload }
+
+    case 'REMOVE_NEW':
+      const removeItem = state.news.filter(
+        (el) => el.objectID !== action.payload
+      )
+
+      return { ...state, news: removeItem }
 
     default:
       return state

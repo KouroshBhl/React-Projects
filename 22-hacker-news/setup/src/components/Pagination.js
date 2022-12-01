@@ -5,7 +5,6 @@ import * as config from '../helper/config'
 const Pagination = () => {
   const { page, totalPages, results, getNews, search } = useGlobalContext()
   const [pageNum, setPageNum] = useState(page)
-  console.log(pageNum, totalPages)
   const nextPageHandler = function () {
     if (pageNum < totalPages) setPageNum((prevBtn) => prevBtn + 1)
     if (pageNum === totalPages) setPageNum(0)
